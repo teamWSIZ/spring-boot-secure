@@ -1,26 +1,25 @@
 package app.controller;
 
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Random;
 
 @RestController
+@Slf4j
 public class MainController {
     @Value("${admin.pass}")
     String pass;
 
-    public MainController() {
+    @Autowired
+    Random mrandom;
 
-    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String help(@RequestParam(value = "pass", defaultValue = "") String cpass) {
@@ -30,7 +29,7 @@ public class MainController {
 
     @RequestMapping(value = "/start-tomcat", method = RequestMethod.GET)
     public String startTomcat() {
-        System.out.println(pass);
+        log.info("Password accessed, is : [{}]", pass);
         return "OK";
     }
 
