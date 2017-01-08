@@ -1,4 +1,1 @@
-
-_) standalone web with angular
-_) redirect logs to file
-_) simple web front
+_) ---
