@@ -6,6 +6,33 @@
     margin-bottom: 5px;
 
 }
+
+.debug {
+    border: 0px solid aquamarine;
+}
+
+.half {
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.iinput {
+    border: none;
+    border-bottom: 1px solid lightslategray;
+    margin-bottom: 1px;
+}
+
+.narrow8 {
+    width: 80%;
+}
+
+.narrow-free2 {
+    width: 20%;
+    max-width: 100px;
+}
+
+
 .narrow-box {
     width: 400px;
 }

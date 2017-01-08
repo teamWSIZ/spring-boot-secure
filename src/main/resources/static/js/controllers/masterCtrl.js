@@ -7,43 +7,30 @@ angular.module('myApp.controllers').controller('masterCtrl',
     ['$rootScope','$scope', '$http',
         function ($rootScope, $scope, $http) {
             //To jest uruchamiane przy każdym wejściu do widoku korzystającego z tego kontrolera
-            console.log('Uruchamiam masterCtrl; M:' + $scope.M);
-
             //Lokalny obiekt modelu, tworzony przy każdym uruchomieniu kontrolera
             $scope.M = {};
             $scope.M.appItems = [];
-            $scope.newItem = {id: '0', title: '', body: ''};
+            $scope.newItem = {};
             $scope.fff = '';
 
-            $scope.addItem = function (nnn) {
-                $scope.M.appItems.push(nnn);
-                $scope.nowa = {id: '', nazwa: ''};
-                $scope.MMM.showNewBooking = false;
+            $scope.cleanItem = function () {
+                $scope.newItem = {id: '0', title: '', body: ''};
+                console.log('New item set')
             };
 
-            $scope.addUser = function () {
-                var userToSave = $scope.M.newItem;
-                return $http({
-                    url: $rootScope.M.URL + '/users',
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    data: JSON.stringify(userToSave)
-                }).success(function (data) {
-                    console.log("OK");
-                });
-            };
-
-            $scope.sendItem = function(itemToPost) {
+            $scope.sendNewItem = function() {
                 return $http({
                     url: $rootScope.M.URL + '/items',
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    data: JSON.stringify(itemToPost)
+                    data: JSON.stringify($scope.newItem)
                     // ,
-                    // params: toSave
+                    // params: any_object
                 }).success(function(data){
                     alert('Send operation OK' + data);
                     $scope.loadArray();
+                    $scope.cleanItem();
+                    $scope.newItem = null;
                 });
             };
 
@@ -51,11 +38,15 @@ angular.module('myApp.controllers').controller('masterCtrl',
                 $http.get($rootScope.M.URL + '/items')
                     .success(function (data) {
                         $scope.M.appItems = data;
+                        $scope.M.appItems.sort(function (a, b) {
+                            return a.title.toLowerCase() > b.title.toLowerCase();
+                        })
                     })
             };
 
             //functions executed on loading the view
             $scope.loadArray();
+            $scope.cleanItem();
 
         }
     ]
