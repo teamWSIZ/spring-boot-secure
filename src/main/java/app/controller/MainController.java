@@ -55,6 +55,7 @@ public class MainController {
     public Double computeIntegral(
             @RequestParam(value = "a", defaultValue = "0") double a,
             @RequestParam(value = "b", defaultValue = "3.141592") double b) {
+        log.debug("REST integrator called");
 
         return integrator.integrateMyFunction1(a, b);
     }

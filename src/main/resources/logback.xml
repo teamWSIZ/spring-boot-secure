@@ -4,14 +4,19 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
             </Pattern>
         </layout>
     </appender>
 
-    <logger name="app.controller.MainController" level="debug">
+    <logger name="app.controller.MainController" level="INFO">
         <appender-ref ref="STDOUT" />
     </logger>
+
+    <logger name="app.service.Integrator" level="INFO">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />

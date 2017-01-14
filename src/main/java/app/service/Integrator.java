@@ -1,6 +1,9 @@
 package app.service;
 
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Integrator {
     private double dx = 0.001;
 
