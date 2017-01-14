@@ -2,6 +2,7 @@ package app.controller;
 
 
 import app.model.AppItem;
+import app.service.Integrator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @Slf4j
@@ -19,6 +21,8 @@ import java.util.Random;
 public class MainController {
     @Value("${admin.pass}")
     String pass;
+
+    Integrator integrator = new Integrator();
 
     //some data
     List<AppItem> items = new ArrayList<>();
@@ -46,6 +50,15 @@ public class MainController {
     public List<AppItem> getItems() {
         return items;
     }
+
+    @RequestMapping(value = "/integral", method = RequestMethod.GET)
+    public Double computeIntegral(
+            @RequestParam(value = "a", defaultValue = "0") double a,
+            @RequestParam(value = "b", defaultValue = "3.141592") double b) {
+
+        return integrator.integrateMyFunction1(a, b);
+    }
+
 
     @RequestMapping(value = "/items", method = RequestMethod.POST)
     public AppItem createItem(@RequestBody AppItem item) {
