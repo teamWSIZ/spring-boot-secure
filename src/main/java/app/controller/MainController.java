@@ -15,7 +15,7 @@ import java.util.Random;
 
 @Slf4j
 @RestController
-//@EnableWebMvc
+@CrossOrigin
 public class MainController {
     @Value("${admin.pass}")
     String pass;
