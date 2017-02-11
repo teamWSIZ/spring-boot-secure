@@ -13,12 +13,12 @@ import java.util.Properties;
 @ImportResource("classpath:wsiz-config/our-config.xml")
 public class SmallConfig {
 
-    //Bean klasy Properties (java.util.Properties), o nazwie (id) "mmAppProps"
+    //Bean klasy Properties (java.util.Properties), o nazwie (id) "ustawienia"
     @Bean
-    public Properties mmAppProps() {
+    public Properties ustawienia() {
         Properties p = new Properties();
         p.put("user", "admin");
-        p.put("haslo", "tajne");
+        p.put("pass", "tajne");
         p.put("db_ip", "10.11.12.13");
         return p;
     }

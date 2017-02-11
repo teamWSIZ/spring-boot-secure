@@ -15,6 +15,9 @@
         <constructor-arg name="original" value="VeryImportantPartner"/>
     </bean>
 
+    <bean id="naszaMapa" class="java.util.HashMap">
+    </bean>
+
 
 
     <!--Beany tworzone i zapełniane danymi-->
