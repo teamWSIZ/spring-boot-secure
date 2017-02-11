@@ -18,6 +18,8 @@
     <bean id="naszaMapa" class="java.util.HashMap">
     </bean>
 
+    <bean id="multService" class="app.service.MultService">
+    </bean>
 
 
     <!--Beany tworzone i zapełniane danymi-->

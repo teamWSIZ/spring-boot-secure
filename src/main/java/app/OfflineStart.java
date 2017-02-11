@@ -3,6 +3,7 @@ package app;
 import app.config.AppConfig;
 import app.config.SmallConfig;
 import app.model.AppItem;
+import app.service.MultService;
 import app.service.SmallService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,8 +27,11 @@ public class OfflineStart {
 
         SmallService ss = ctx.getBean(SmallService.class);
         System.out.println(ss.addNumbers(10, 12));
-
         System.out.println(ss.daneDoBazy());
+
+        System.out.println("---------------------------------------");
+        MultService ms = ctx.getBean(MultService.class);
+        System.out.println(ms.squareDiff(4,2));
 
         ctx.close();
     }

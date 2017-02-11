@@ -1,5 +1,6 @@
 package app.config;
 
+import app.service.MultService;
 import app.service.SmallService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,4 +28,9 @@ public class SmallConfig {
     public SmallService smallService() {
         return new SmallService();
     }
+
+//    @Bean
+//    MultService multService() {
+//        return new MultService();
+//    }
 }

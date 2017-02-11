@@ -2,6 +2,7 @@ package app.controller;
 
 
 import app.model.AppItem;
+import app.service.MultService;
 import app.service.SmallService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class MainController {
     @Autowired
     SmallService smallService;
 
+    @Autowired
+    MultService multService;
+
     @ManagedOperation(description = "abra kadabra")
     public String printAbra() {
         return "Abra kadabra";
@@ -47,6 +51,14 @@ public class MainController {
     public String help(@RequestParam(value = "pass", defaultValue = "") String cpass) {
         if (!pass.equals(cpass)) return "";
         return "OK";
+    }
+
+    @RequestMapping(value = "/mult", method = RequestMethod.GET)
+    public String help(
+            @RequestParam(value = "a", defaultValue = "0") Integer a,
+            @RequestParam(value = "b", defaultValue = "0") Integer b
+            ) {
+        return "" + multService.squareDiff(a, b);
     }
 
     @RequestMapping(value = "/start-tomcat", method = RequestMethod.GET)
