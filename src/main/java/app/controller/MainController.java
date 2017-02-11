@@ -2,9 +2,12 @@ package app.controller;
 
 
 import app.model.AppItem;
+import app.service.SmallService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jmx.export.annotation.ManagedOperation;
+import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -16,9 +19,19 @@ import java.util.Random;
 @Slf4j
 @RestController
 @CrossOrigin
+@ManagedResource
 public class MainController {
     @Value("${admin.pass}")
     String pass;
+
+    @Autowired
+    SmallService smallService;
+
+    @ManagedOperation(description = "abra kadabra")
+    public String printAbra() {
+        return "Abra kadabra";
+    }
+
 
     //some data
     List<AppItem> items = new ArrayList<>();

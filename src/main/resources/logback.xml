@@ -9,6 +9,10 @@
         </layout>
     </appender>
 
+    <logger name="org.springframework.web" level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
     <logger name="app.controller.MainController" level="debug">
         <appender-ref ref="STDOUT" />
     </logger>

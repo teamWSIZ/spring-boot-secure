@@ -1,17 +1,14 @@
 package app;
 
-import app.web.CorsFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import javax.servlet.Filter;
 
 /**
- *
+ * Aplikacja startująca serwer https, i wszystkie bean-y systemu
  */
 
-@SpringBootApplication
+//To jest kobyła która chodzi po pakietach `config` i `service` i wciąga wszystkie file oznaczone jako @Configuration
+@SpringBootApplication(scanBasePackages = {"config","service"})
 public class Application {
 
     public static void main(String[] args) {
