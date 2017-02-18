@@ -61,6 +61,12 @@ public class OfflineStart {
         repo.delete(nowy);
 //        System.out.println("nowy:" + nowy);
 
+        System.out.println("------------------");
+
+        //Sprawdzanie funkcji szukania userów po dacie urodzenia
+        for(User u : repo.getByBirthdate(df.parse("2000-02-01"))) {
+            System.out.println("###->" + u);
+        }
 
 
         ctx.close();
