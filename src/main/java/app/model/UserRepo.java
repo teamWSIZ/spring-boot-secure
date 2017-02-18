@@ -16,7 +16,7 @@ import java.util.List;
 public interface UserRepo extends CrudRepository<User,Integer> {
     List<User> getByActiveTrue();
     List<User> getByBirthdateAfter(Date d);
-    User getByUsername(String username);
+    List<User> getByUsername(String username);
     List<User> getByBirthdate(Date d);
 }
 
