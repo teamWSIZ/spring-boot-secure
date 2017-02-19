@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jolokia="http://www.springframework.org/schema/aop"
+       xmlns:jolokia="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <!--Dalsze wczytywanie konfigów z kolejnych .xml-i-->
     <!--<import resource="classpath:/wsiz-config/our-config2.xml"/>-->
-
 
 
     <!--Beany tworzone z wykorzystaniem konstruktorów-->
@@ -27,6 +27,21 @@
         <property name="id" value="11"/>
         <property name="body" value="p1p2p3"/>
         <property name="title" value="EssentialItem"/>
+    </bean>
+
+    <!--JPA : polaczenie z DB i ORM-->
+    <bean id="xxxyyyzzzFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="xxxyyyzzz"/>
+    </bean>
+
+    <jpa:repositories base-package="app.model" entity-manager-factory-ref="xxxyyyzzzFactory"/>
+
+    <!--Use @Transactional on methods requiring Tx-context; @Modifying where writes occur -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="xxxyyyzzzFactory"/>
     </bean>
 
 
