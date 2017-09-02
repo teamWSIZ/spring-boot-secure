@@ -11,7 +11,7 @@
         <!--Listing classes for Wildfly (Tomcat discovers)-->
         <class>app.model.User</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://10.10.22.255:5432/student" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1:5555/student" />
             <property name="javax.persistence.jdbc.user" value="student" />
             <property name="javax.persistence.jdbc.password" value="wsiz#1234" />
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
