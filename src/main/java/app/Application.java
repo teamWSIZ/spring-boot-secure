@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 //To jest kobyła która chodzi po pakietach `config` i `service` i wciąga wszystkie file oznaczone jako @Configuration
-@SpringBootApplication(scanBasePackages = {"config","service"})
+@SpringBootApplication(scanBasePackages = {"app.config","app.service", "app.controller"})
 public class Application {
 
     public static void main(String[] args) {

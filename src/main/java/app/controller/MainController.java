@@ -2,6 +2,8 @@ package app.controller;
 
 
 import app.model.AppItem;
+import app.model.UserDetail;
+import app.model.UserDetailRepo;
 import app.service.MultService;
 import app.service.SmallService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +32,9 @@ public class MainController {
 
     @Autowired
     MultService multService;
+
+    @Autowired
+    UserDetailRepo userDetailRepo;
 
     @ManagedOperation(description = "abra kadabra")
     public String printAbra() {
@@ -79,6 +84,10 @@ public class MainController {
         return item;
     }
 
+    @RequestMapping(value = "/userdetails", method = RequestMethod.GET)
+    public Iterable<UserDetail> getDetails() {
+        return userDetailRepo.findAll();
+    }
 
 
     @RequestMapping(value = "/app")

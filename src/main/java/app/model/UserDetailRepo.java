@@ -6,5 +6,5 @@ import java.util.Date;
 import java.util.List;
 
 public interface UserDetailRepo extends CrudRepository<UserDetail,Integer> {
-    UserDetail getByPesel(String pesel);
+    List<UserDetail> getByPesel(String pesel);
 }
