@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public class OfflineStart {
-    public static void main(String[] args) throws Exception {
+    public static void main_(String[] args) throws Exception {
 
         //Uruchamianie spring-a bazując na konfiguracji z pliku SmallConfig.class
         AnnotationConfigApplicationContext ctx =

@@ -1,0 +1,33 @@
+
+--tworzenie tabel do obecnej wersji systemu
+
+-- public class AppItem {
+-- Integer id;
+-- String title;
+-- String body;
+-- }
+
+-- Integer userdetailid;
+-- Integer userid;
+-- String pesel;
+-- String comment;
+
+CREATE TABLE userdetail(
+  userdetailid SERIAL,
+  userid int,
+  pesel text,
+  comment text
+);
+
+create table appitem (
+  id SERIAL,
+  title text,
+  body text
+);
+
+CREATE TABLE users(
+  userid SERIAL,
+  username text,
+  birthdate date,
+  active BOOLEAN
+);
