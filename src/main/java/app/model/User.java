@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppItem {
-    Integer id;
-    String title;
-    String body;
+public class User {
+    Integer userid;
+    String name;
+    String phone;
 }

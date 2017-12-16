@@ -1,4 +1,5 @@
 package app.config;
+import app.service.UserService;
 import app.web.CorsFilter;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +18,11 @@ public class AppConfig extends WebMvcAutoConfiguration {
     @Bean
     public Filter corsConfigurer() {
         return new CorsFilter();
+    }
+
+    @Bean
+    UserService userService() {
+        return new UserService();
     }
 
 }
