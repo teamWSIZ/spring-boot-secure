@@ -25,13 +25,9 @@ app.run(function ($rootScope) {
 
     $rootScope.M = {};
     //Global properties
-    $rootScope.M.URL = 'https://localhost:8443';
+    $rootScope.M.URL = 'https://localhost:8444';
 
     // Globalnie-dostępna tablica i referencja do jednego z jej elementów (M.selStud)
-    $rootScope.users = [
-        {nazwisko:'Xilan', imie:'Wu', studentid:1},
-        {nazwisko:'Xi', imie:'Jinping', studentid:2},
-        {nazwisko:'Hu', imie:'Jintao', studentid:3}
-    ];
-    $rootScope.M.selStud = $rootScope.users[0];
+    $rootScope.users = [];
+    //$rootScope.M.selStud = $rootScope.users[0];
 });

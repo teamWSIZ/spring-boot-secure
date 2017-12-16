@@ -10,6 +10,7 @@ angular.module('myApp.controllers').controller('masterCtrl',
             //Lokalny obiekt modelu, tworzony przy każdym uruchomieniu kontrolera
             $scope.M = {};
             $scope.M.appItems = [];
+            $scope.M.users = [];
             $scope.newItem = {};
             $scope.fff = '';
 
@@ -34,19 +35,19 @@ angular.module('myApp.controllers').controller('masterCtrl',
                 });
             };
 
-            $scope.loadArray = function () {
-                $http.get($rootScope.M.URL + '/items')
+            $scope.loadUsers = function () {
+                $http.get($rootScope.M.URL + '/users')
                     .success(function (data) {
-                        $scope.M.appItems = data;
-                        $scope.M.appItems.sort(function (a, b) {
-                            return a.title.toLowerCase() > b.title.toLowerCase();
-                        })
+                        $scope.M.users = data;
+                        // $scope.M.appItems.sort(function (a, b) {
+                        //     return a.title.toLowerCase() > b.title.toLowerCase();
+                        // })
                     })
             };
 
             //functions executed on loading the view
-            $scope.loadArray();
-            $scope.cleanItem();
+            // $scope.loadArray();
+            // $scope.cleanItem();
 
         }
     ]
