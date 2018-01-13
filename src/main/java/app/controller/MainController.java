@@ -31,7 +31,6 @@ public class MainController {
         return userService.get(id);
     }
 
-
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public User createUser(@RequestBody User user) {
         log.debug("Update/insert for user: [{}]", user);
@@ -50,7 +49,7 @@ public class MainController {
 
     @RequestMapping(value = "/status")
     public String status() {
-        return "App is running OK";
+        return "Application is running OK";
     }
 
     @RequestMapping(value = "/system")
