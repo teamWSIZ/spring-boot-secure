@@ -1,7 +1,7 @@
 package app.controller;
 
 
-import app.service.AbraKadabra;
+import app.service.AbraKadabraService;
 import app.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ public class FilesController {
     FileService fileService;
 
     @Autowired
-    AbraKadabra abraKadabra;
+    AbraKadabraService abraKadabra;
 
     private static final Logger log = LoggerFactory.getLogger(MainController.class);
 

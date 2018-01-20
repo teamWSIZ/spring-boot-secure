@@ -25,7 +25,6 @@ public class MainController {
     }
 
 
-
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public User getUser(
             @PathVariable Integer id) {

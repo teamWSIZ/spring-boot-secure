@@ -4,6 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Serwis do zarządzania operacjami na wewnęrznym storage-u plików
+ *
+ */
 public class FileService {
 
 

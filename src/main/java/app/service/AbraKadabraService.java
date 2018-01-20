@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component      //ta annotacja powoduje, że serwis zostanie automatycznie wykryty jako "bean" (nie trzeba pisać w AppConfig)
-public class AbraKadabra {
+public class AbraKadabraService {
     //Serwisy mogą używać siebie nawzajem
 
     @Autowired

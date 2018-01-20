@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Serwis zarządzający dostępem do bazy userów systemu.
+ */
 public class UserService {
     Map<Integer, User> userStore = new HashMap<>();
     AtomicInteger idSqeuence = new AtomicInteger(0);
