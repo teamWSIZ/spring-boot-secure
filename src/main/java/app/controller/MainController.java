@@ -13,8 +13,10 @@ import java.util.List;
 
 @RestController
 public class MainController {
+
     @Autowired
     UserService userService;
+
     private static final Logger log = LoggerFactory.getLogger(MainController.class);
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
