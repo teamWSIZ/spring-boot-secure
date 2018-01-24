@@ -1,8 +1,5 @@
 package app.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import static java.lang.Runtime.getRuntime;
 import static java.lang.System.getProperty;
 
@@ -10,8 +7,6 @@ import static java.lang.System.getProperty;
  * Prosty obiekt do transportu danych o hoście na którym działa aplikacja
  */
 
-@Data
-@AllArgsConstructor
 public class SystemInfo {
     String osName;
     String osVersion;
