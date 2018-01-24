@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
 @RestController
 public class MainController {
 
@@ -19,13 +21,13 @@ public class MainController {
 
     private static final Logger log = LoggerFactory.getLogger(MainController.class);
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/users", method = GET)
     public List<User> getUsers() {
         return userService.getAll();
     }
 
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/{id}", method = GET)
     public User getUser(
             @PathVariable Integer id) {
         log.debug("Getting details of user with id: {}", id);
@@ -33,14 +35,14 @@ public class MainController {
         return userService.get(id);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    @RequestMapping(value = "/users", method = POST)
     public User createUser(@RequestBody User user) {
         log.debug("Update/insert for user: [{}]", user);
         userService.save(user);
         return user;
     }
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/users/{id}", method = DELETE)
     public User deleteUser(
             @PathVariable Integer id) {
         log.debug("Deleting user with id: {}", id);

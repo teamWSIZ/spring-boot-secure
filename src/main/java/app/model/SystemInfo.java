@@ -27,6 +27,55 @@ public class SystemInfo {
         definitelyFreeMemoryMb = getRuntime().freeMemory();
         presumableFreeMemoryMb /= (1024 * 1024);
         definitelyFreeMemoryMb /= (1024 * 1024);
+    }
 
+    //generated
+
+    public String getOsName() {
+        return osName;
+    }
+
+    public void setOsName(String osName) {
+        this.osName = osName;
+    }
+
+    public String getOsVersion() {
+        return osVersion;
+    }
+
+    public void setOsVersion(String osVersion) {
+        this.osVersion = osVersion;
+    }
+
+    public Integer getCores() {
+        return cores;
+    }
+
+    public void setCores(Integer cores) {
+        this.cores = cores;
+    }
+
+    public Long getPresumableFreeMemoryMb() {
+        return presumableFreeMemoryMb;
+    }
+
+    public void setPresumableFreeMemoryMb(Long presumableFreeMemoryMb) {
+        this.presumableFreeMemoryMb = presumableFreeMemoryMb;
+    }
+
+    public Long getDefinitelyFreeMemoryMb() {
+        return definitelyFreeMemoryMb;
+    }
+
+    public void setDefinitelyFreeMemoryMb(Long definitelyFreeMemoryMb) {
+        this.definitelyFreeMemoryMb = definitelyFreeMemoryMb;
+    }
+
+    public Long getMaxMemory() {
+        return maxMemory;
+    }
+
+    public void setMaxMemory(Long maxMemory) {
+        this.maxMemory = maxMemory;
     }
 }

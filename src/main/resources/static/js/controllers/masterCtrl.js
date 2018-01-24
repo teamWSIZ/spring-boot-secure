@@ -3,7 +3,8 @@ angular.module('myApp.controllers',[]);
 
 
 //Kontroler użyty na panelu userów (panel zarządzania danymi)
-angular.module('myApp.controllers').controller('masterCtrl',
+angular.module('myApp.controllers')
+.controller('masterCtrl',
     ['$rootScope','$scope', '$http', '$timeout', '$interval',
         function ($rootScope, $scope, $http, $timeout, $interval) {
             //To jest uruchamiane przy każdym wejściu do widoku korzystającego z tego kontrolera
@@ -14,6 +15,9 @@ angular.module('myApp.controllers').controller('masterCtrl',
             $scope.M.message = '';
             $scope.newItem = {};
             $scope.fff = '';
+            $scope.current_path = '.';
+            $scope.filenames = [];
+            $scope.M.selected_filename='.';
 
             $scope.cleanItem = function () {
                 $scope.newItem = {id: '0', title: '', body: ''};
@@ -36,7 +40,7 @@ angular.module('myApp.controllers').controller('masterCtrl',
                 });
             };
 
-            $scope.loadUsers = function () {
+            $scope.loadUsers = function() {
                 $http.get($rootScope.M.URL + '/users')
                     .success(function (data) {
                         $scope.M.users = data;
@@ -46,18 +50,73 @@ angular.module('myApp.controllers').controller('masterCtrl',
                     })
             };
 
-            $timeout(function(){
-                $scope.M.message += '.';
-                alert('Done');
-            }, 1000);
+            //lists files
+            $scope.listFiles = function(path) {
+                let par = {
+                    path: path
+                };
+                return $http({
+                    url: $rootScope.M.URL + '/files',
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/json'},
+                    params: par
+                }).success(function(data){
+                    $scope.filenames = data;
+                });
+            }
 
-            $interval(function(){
-                $scope.M.message += 'x';
-            }, 2000);
+            $scope.upload = function () {
+                console.log('uploading file!');
+                const f = document.getElementById('uploadedfiles').files[0];
+                let r = new FileReader();
+                r.onloadend = function (e) {
+                    let url = $rootScope.M.URL + '/files/upload';
+                    let formData = new FormData();
+                    formData.append('file', f);
 
-            //functions executed on loading the view
-            // $scope.loadArray();
-            // $scope.cleanItem();
+                    $http.post(url, formData, {
+                        headers: {'Content-Type': undefined}
+                    }).success(function (msg) {
+                        console.log('OK');
+                    }).error(function (msg) {
+                        console.log('Sending file failed');
+                    });
+                };
+                r.readAsDataURL(f);
+            };
+
+            $scope.uploadFile = function(event){
+                var files = event.target.files;
+                console.log(files);
+                const f = files[0];
+                console.log(f);
+                let r = new FileReader();
+                r.onloadend = function (e) {
+                    let url = $rootScope.M.URL + '/files/upload';
+                    let formData = new FormData();
+                    formData.append('file', f);
+
+                    $http.post(url, formData, {
+                        transformRequest: angular.identity,
+                        headers: {'Content-Type': undefined}
+                    }).success(function (msg) {
+                        console.log('OK');
+                    }).error(function (msg) {
+                        console.log('Sending file failed');
+                    });
+                };
+                r.readAsDataURL(f);
+            };
+
+
+            // $timeout(function(){
+            //     $scope.M.message += '.';
+            //     alert('Done');
+            // }, 1000);
+
+            // $interval(function(){
+            //     $scope.M.message += 'x';
+            // }, 2000);
 
         }
     ]

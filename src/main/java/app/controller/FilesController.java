@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
 @RestController
 public class FilesController {
     @Autowired
@@ -24,13 +26,13 @@ public class FilesController {
 
     private static final Logger log = LoggerFactory.getLogger(MainController.class);
 
-    @RequestMapping(value = "/files", method = RequestMethod.GET)
+    @RequestMapping(value = "/files", method = GET)
     public List<String> listFilesOfPath(@RequestParam(value = "path", defaultValue = ".") String path) {
         return fileService.getFileNames(path);
     }
 
     //Client downloads a file
-    @RequestMapping(value = "/files/download", method = RequestMethod.GET)
+    @RequestMapping(value = "/files/download", method = GET)
     @ResponseBody
     public void downloadFile(
             @RequestParam(value = "path") String path,
@@ -54,7 +56,7 @@ public class FilesController {
     }
 
     //Client uploads file
-    @RequestMapping(value = "/files/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/files/upload", method = POST)
     @ResponseBody
     public void uploadFile(@RequestParam("file") MultipartFile file) {
         String filename = file.getOriginalFilename();
