@@ -4,13 +4,14 @@ angular.module('myApp.controllers',[]);
 
 //Kontroler użyty na panelu userów (panel zarządzania danymi)
 angular.module('myApp.controllers').controller('masterCtrl',
-    ['$rootScope','$scope', '$http',
-        function ($rootScope, $scope, $http) {
+    ['$rootScope','$scope', '$http', '$timeout', '$interval',
+        function ($rootScope, $scope, $http, $timeout, $interval) {
             //To jest uruchamiane przy każdym wejściu do widoku korzystającego z tego kontrolera
             //Lokalny obiekt modelu, tworzony przy każdym uruchomieniu kontrolera
             $scope.M = {};
             $scope.M.appItems = [];
             $scope.M.users = [];
+            $scope.M.message = '';
             $scope.newItem = {};
             $scope.fff = '';
 
@@ -44,6 +45,15 @@ angular.module('myApp.controllers').controller('masterCtrl',
                         // })
                     })
             };
+
+            $timeout(function(){
+                $scope.M.message += '.';
+                alert('Done');
+            }, 1000);
+
+            $interval(function(){
+                $scope.M.message += 'x';
+            }, 2000);
 
             //functions executed on loading the view
             // $scope.loadArray();
