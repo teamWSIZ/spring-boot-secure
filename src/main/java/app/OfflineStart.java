@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public class OfflineStart {
-    public static void main_(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         //Uruchamianie spring-a bazując na konfiguracji z pliku SmallConfig.class
         AnnotationConfigApplicationContext ctx =
@@ -39,10 +39,10 @@ public class OfflineStart {
 
 //        //Test bazy danych
 //        System.out.println("--------all---------");
-//        UserRepo repo = ctx.getBean(UserRepo.class);
-//        for(User u : repo.findAll()) {
-//            System.out.println(u);
-//        }
+        UserRepo repo = ctx.getBean(UserRepo.class);
+        for(User u : repo.findAll()) {
+            System.out.println(u);
+        }
 //        System.out.println("--------active---------");
 //        for(User u : repo.getByActiveTrue()) {
 //            System.out.println(u);
@@ -67,14 +67,14 @@ public class OfflineStart {
 //            System.out.println("###->" + u);
 //        }
 
-        UserDetailRepo repo = ctx.getBean(UserDetailRepo.class);
-        repo.save(new UserDetail(null, 1, "PPP1234", "Deus vult!"));
-        for (UserDetail ud : repo.findAll()) {
+        UserDetailRepo repo1 = ctx.getBean(UserDetailRepo.class);
+        repo1.save(new UserDetail(null, 1, "PPP1234", "Deus vult!"));
+        for (UserDetail ud : repo1.findAll()) {
             System.out.println(ud);
         }
 
         System.out.println("----------------");
-        System.out.println(repo.getByPesel("PPP1234"));
+        System.out.println(repo1.getByPesel("PPP1234"));
 
         ctx.close();
     }
